@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: colorcc-biz-provider
+#    instance_id: kkk
+  cloud: 
+    config:
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}

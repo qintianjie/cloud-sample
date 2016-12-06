@@ -1,0 +1,9 @@
+server: 
+  port: ${PORT:8091}
+  enableSelfPreservation: false
+  
+eureka:
+  instance: colorcc-biz-consumer
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
