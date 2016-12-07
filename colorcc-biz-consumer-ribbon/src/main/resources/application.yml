@@ -1,0 +1,22 @@
+server: 
+  port: ${PORT:8093}
+#  enableSelfPreservation: false
+  
+spring:
+  application:
+    name: biz-consumer-ribbon
+  
+eureka:
+  instance: colorcc-biz-consumer-ribbon
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      
+colorcc-biz-provider: 
+  ribbon:
+    eureka:
+      enabled: false
+      listOfServers: localhost:8081,localhost:8082,localhost:8083
+#      listOfServers: colorcc-biz-provider:8081,colorcc-biz-provider:8082,colorcc-biz-provider:8083
+#    listOfServers:  LenovoDd:colorcc-biz-provider:8081, LenovoDd:colorcc-biz-provider:8082, LenovoDd:colorcc-biz-provider:8083
+    ServerListRefreshInterval: 15000

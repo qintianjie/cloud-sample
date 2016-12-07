@@ -48,6 +48,7 @@
 		<module>colorcc-cloud-eureka</module>
 		<module>colorcc-biz-provider</module>
 		<module>colorcc-biz-consumer</module>
+		<module>colorcc-biz-consumer-ribbon</module>
 	</modules>
 
 	<build>
