@@ -1,4 +1,4 @@
-package com.colorcc.cloud.biz.consumer.ribbon;
+package com.colorcc.cloud.biz.consumer.ribbon.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,6 @@ import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
 
-//@Configuration
 public class BizConsumerRibbonConfiguration {
 	@Autowired
 	IClientConfig ribbonClientConfig;

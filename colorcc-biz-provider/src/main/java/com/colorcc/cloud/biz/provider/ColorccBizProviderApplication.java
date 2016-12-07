@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ColorccBizProviderApplication {
 
+	/**
+	 * 必须有 / 可访问路径，供 ribbon 做 loadbalance 探测用
+	 * @return
+	 */
 	@RequestMapping(value = "/")
 	public String home() {
 		return "Hi!";

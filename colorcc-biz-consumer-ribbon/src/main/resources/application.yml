@@ -12,7 +12,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
       
-colorcc-biz-provider:
+colorcc-biz-consumer-ribbon:
   ribbon:
     eureka:
       enabled: false
