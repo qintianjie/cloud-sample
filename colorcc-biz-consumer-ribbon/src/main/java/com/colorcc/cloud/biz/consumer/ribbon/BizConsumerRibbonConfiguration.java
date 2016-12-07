@@ -9,6 +9,7 @@ import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
 
+//@Configuration
 public class BizConsumerRibbonConfiguration {
 	@Autowired
 	IClientConfig ribbonClientConfig;
@@ -22,5 +23,4 @@ public class BizConsumerRibbonConfiguration {
 	public IRule ribbonRule(IClientConfig config) {
 		return new AvailabilityFilteringRule();
 	}
-
 }

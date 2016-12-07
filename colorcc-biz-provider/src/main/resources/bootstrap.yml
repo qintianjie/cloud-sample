@@ -1,6 +1,6 @@
-spring:
-  application:
-    name: colorcc-biz-provider
+#spring:
+#  application:
+#    name: colorcc-biz-provider
 #    instance_id: kkk
   cloud: 
     config:

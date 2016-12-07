@@ -1,6 +1,10 @@
 server: 
   port: ${PORT:8081}
   
+spring:
+  application:
+    name: colorcc-biz-provider
+  
 eureka:
   instance: 
     instanceId:  ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
