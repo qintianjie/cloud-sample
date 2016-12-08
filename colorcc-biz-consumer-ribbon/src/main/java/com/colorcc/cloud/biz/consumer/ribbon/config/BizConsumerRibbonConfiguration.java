@@ -17,9 +17,18 @@ public class BizConsumerRibbonConfiguration {
 	public IPing ribbonPing(IClientConfig config) {
 		return new PingUrl();
 	}
+	
+//	@Bean IRule rule() {
+//		return new RandomRule();
+//	}
 
 	@Bean
 	public IRule ribbonRule(IClientConfig config) {
 		return new AvailabilityFilteringRule();
+	}
+	
+	@Bean 
+	public String name() {
+		return "colorcc-biz-provider";
 	}
 }

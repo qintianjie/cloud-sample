@@ -9,12 +9,22 @@ spring:
 eureka:
   instance: colorcc-biz-consumer-ribbon
   client:
+#    availabilityZones: 
+#      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}} 
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-      
-colorcc-biz-consumer-ribbon:
+      defaultZone: http://localhost:8761/eureka/  
+  
+# ribbon 请求 provider 对应的  spring.applicaiton.name ，供  LoadBalancer 时从 Eureka 查对应的服务用
+provider: 
+  name: colorcc-biz-provider
+  
+colorcc-biz-consumer-ribbon: 
   ribbon:
-    eureka:
-      enabled: false
-    listOfServers: localhost:8081,localhost:8082
-    ServerListRefreshInterval: 15000
+#    eureka:
+#      enabled: false
+#    listOfServers: localhost:8081,localhost:8082
+    ServerListRefreshInterval: 1000
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+    

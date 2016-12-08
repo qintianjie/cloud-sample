@@ -5,15 +5,13 @@ package com.colorcc.cloud.biz.consumer.ribbon.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import com.colorcc.cloud.biz.consumer.ribbon.config.BizConsumerRibbonConfiguration;
 
 /**
  * http://localhost:8093/ribbon/s2/hi 
@@ -25,10 +23,16 @@ import com.colorcc.cloud.biz.consumer.ribbon.config.BizConsumerRibbonConfigurati
  *
  */
 @RestController
-@RibbonClient(name = "colorcc-biz-consumer-ribbon", configuration = BizConsumerRibbonConfiguration.class)
 @RequestMapping("/ribbon/s2")
 public class SampleTwoController {
 	
+	@Value("${provider.name}")
+    private String providerName; 
+	
+	public String getProviderName() {
+		return providerName;
+	}
+
 	/**
 	 * DynamicServerListLoadBalancerforclientcolorcc-biz-consumer-ribboninitialized: DynamicServerListLoadBalancer: {
 		    NFLoadBalancer: name=colorcc-biz-consumer-ribbon,
@@ -70,7 +74,9 @@ public class SampleTwoController {
 
 	@RequestMapping("/hi")
 	public String hi(@RequestParam(value = "name", defaultValue = "Sample") String name) {
-		String response = this.restTemplate.getForObject("http://colorcc-biz-consumer-ribbon/hello/say?name={name}", String.class, name);
+		System.out.println("pn: " + this.getProviderName());
+//		String response = this.restTemplate.getForObject("http://colorcc-biz-provider/hello/say?name={name}", String.class, name);
+		String response = this.restTemplate.getForObject("http://" + this.getProviderName() + "/hello/say?name={name}", String.class, name);
 		return String.format("%s", response);
 	}
 
