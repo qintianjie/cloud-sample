@@ -16,7 +16,6 @@ import com.colorcc.cloud.biz.consumer.ribbon.config.BizConsumerRibbonConfigurati
  */
 @SpringBootApplication
 @EnableEurekaClient
-//@EnableConfigServer
 @RibbonClient(name = "colorcc-biz-consumer-ribbon", configuration = BizConsumerRibbonConfiguration.class)
 @ComponentScan("com.colorcc.cloud.biz.consumer.ribbon.controller")
 public class ColorccBizConsumerRibbonApplication {
