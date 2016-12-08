@@ -50,6 +50,7 @@
 		<module>colorcc-biz-consumer</module>
 		<module>colorcc-biz-consumer-ribbon</module>
 		<module>colorcc-config-server</module>
+		<module>colorcc-config-client</module>
 	</modules>
 
 	<build>
