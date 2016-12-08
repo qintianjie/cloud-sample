@@ -7,7 +7,7 @@
 			http://localhost:8098/cloud-sample/dev   
 	colorcc-config-client: 		业务端，使用git作为配置中心    
 			http://localhost:8096/message    
-	cloud-sample/config-repo:  配置信息     
+	cloud-sample/config-repo:  配置信息    
 			更新后需先：[POST! POST! POST!]  http://localhost:8096/refresh    
 	
 
