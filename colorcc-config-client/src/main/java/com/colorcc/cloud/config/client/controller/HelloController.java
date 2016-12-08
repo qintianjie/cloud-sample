@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 	
-	@Value("${k1:Hello default}")
+	@Value("${message:Hello default}")
     private String message;
 
     @RequestMapping("/message")

@@ -3,4 +3,4 @@ spring:
     name: configclient
   cloud: 
     config:  
-      uri: http://localhost:8098/cloud-sample/dev
+      uri: http://localhost:8098
