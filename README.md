@@ -8,9 +8,12 @@
 	colorcc-config-client: 		业务端，使用git作为配置中心    
 			http://localhost:8096/message    
 	cloud-sample/config-repo:  配置信息    
-			更新后需先：[POST! POST! POST!]  http://localhost:8096/refresh    
+			更新后需先：[POST! POST! POST!]  http://localhost:8096/refresh
+	colorcc-gateway-zuul:    zuul gateway sample  
 	
-
+20161215  
+	完成 Eureka、 Ribbon、 Config, Hystrix, Zuul  sample    
+	
 20161209  
 	完成 Eureka、 Ribbon、 Config  sample   
 

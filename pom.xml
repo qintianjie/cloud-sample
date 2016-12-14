@@ -51,6 +51,7 @@
 		<module>colorcc-biz-consumer-ribbon</module>
 		<module>colorcc-config-server</module>
 		<module>colorcc-config-client</module>
+		<module>colorcc-gateway-zuul</module>
 	</modules>
 
 	<build>

@@ -27,4 +27,14 @@ colorcc-biz-consumer-ribbon:
     MaxAutoRetries: 1
     MaxAutoRetriesNextServer: 1
     OkToRetryOnAllOperations: true
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    biz-consumer-ribbon: /jack/**   #http://localhost:8093/jack/hello  --> http://localhost:8093/hello
+
+#zuul: 
+#  routes: 
+#    biz-consumer-ribbon: 
+#      url: http://localhost:8082
     

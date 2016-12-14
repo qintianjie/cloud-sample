@@ -6,6 +6,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.colorcc.cloud.biz.consumer.ribbon.config.BizConsumerRibbonConfiguration;
@@ -31,7 +32,7 @@ import com.colorcc.cloud.biz.consumer.ribbon.config.BizConsumerRibbonConfigurati
 @EnableEurekaClient
 @EnableCircuitBreaker
 @EnableHystrixDashboard
-//@EnableZuulProxy
+@EnableZuulProxy
 @RibbonClient(name = "colorcc-biz-consumer-ribbon", configuration = BizConsumerRibbonConfiguration.class)
 @ComponentScan("com.colorcc.cloud.biz.consumer.ribbon.controller,com.colorcc.cloud.hystrix.web.controller, com.colorcc.cloud.hystrix.biz.service.impl")
 public class ColorccBizConsumerRibbonApplication {

@@ -1,0 +1,37 @@
+server: 
+  port: ${PORT:8094}
+  
+spring:
+  application:
+    name: colorcc-gateway-zuul
+  
+eureka:
+  instance: colorcc-gateway-zuul-ribbon
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  
+      
+colorcc-gateway-zuul-ribbon: 
+  ribbon:
+#    eureka:
+#      enabled: false
+#    listOfServers: localhost:8081,localhost:8082
+    ServerListRefreshInterval: 1000
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+
+# http://localhost:8094/jack/ribbon/s2/hi --> http://localhost:8093/ribbon/s2/hi
+# 即：本机的 /jack/xxxx 转到 biz-consumer-ribbon 对应的 /xxx 方法访问
+# 对外只暴露 zuul 提供的接口即可
+zuul: 
+  stripPrefix: true     # 如果为false, 则前缀保留跳转
+  ignoredServices: '*'
+  routes:
+    biz-consumer-ribbon: /jack/**   # http://localhost:8094/jack/hello  --> http://localhost:8093/hello
+    serviceId: biz-consumer-ribbon  # 如果没有 serviceId, 则 /jack/xxx --> /xxx ,即对本机访问
+    
+#ribbon:
+#  eureka:
+#    enabled: false
+    
