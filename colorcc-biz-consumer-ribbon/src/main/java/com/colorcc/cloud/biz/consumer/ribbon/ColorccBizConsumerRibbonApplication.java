@@ -34,7 +34,8 @@ import com.colorcc.cloud.biz.consumer.ribbon.config.BizConsumerRibbonConfigurati
 @EnableHystrixDashboard
 @EnableZuulProxy
 @RibbonClient(name = "colorcc-biz-consumer-ribbon", configuration = BizConsumerRibbonConfiguration.class)
-@ComponentScan("com.colorcc.cloud.biz.consumer.ribbon.controller,com.colorcc.cloud.hystrix.web.controller, com.colorcc.cloud.hystrix.biz.service.impl")
+@ComponentScan("com.colorcc.cloud.biz.consumer.ribbon.controller, com.colorcc.cloud.hystrix.web.controller")
+@ComponentScan("com.colorcc.cloud.hystrix.biz.service.impl, com.colorcc.cloud.rxjava.web.controller")
 public class ColorccBizConsumerRibbonApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ColorccBizConsumerRibbonApplication.class, args);
