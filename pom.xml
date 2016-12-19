@@ -52,6 +52,7 @@
 		<module>colorcc-config-server</module>
 		<module>colorcc-config-client</module>
 		<module>colorcc-gateway-zuul</module>
+		<module>colorcc-trace-zipkin</module>
 	</modules>
 
 	<build>

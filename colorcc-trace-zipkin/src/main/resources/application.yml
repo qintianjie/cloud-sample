@@ -1,0 +1,36 @@
+server:
+  port: 9411
+
+spring: 
+  cloud: 
+    zookeeper: 
+      connectString: 192.168.1.106:2181
+    stream: 
+      kafka: 
+        binder: 
+          zk-nodes: 192.168.1.106 
+          brokers: 192.168.1.106 
+  zipkin:
+    base-url: http://localhost:9411/  #spring-cloud-sleuth-zipkin
+  sleuth:
+    stream:
+      enabled: false
+    sampler:
+      percentage: 0.5
+
+zipkin:
+  collector: 
+    kafka: 
+      zookeeper: 192.168.1.106:2181   # spring-cloud-stream-binder-kafka
+      
+eureka:
+#  server: 
+#     enableSelfPreservation: false
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false   # 禁用客户端注册行为
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+  
