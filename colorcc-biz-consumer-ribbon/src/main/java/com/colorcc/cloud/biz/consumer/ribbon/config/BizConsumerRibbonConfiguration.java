@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
 import com.netflix.client.config.IClientConfig;
-import com.netflix.loadbalancer.AvailabilityFilteringRule;
 import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
+import com.netflix.loadbalancer.RetryRule;
 
 public class BizConsumerRibbonConfiguration {
 	@Autowired
@@ -22,10 +22,15 @@ public class BizConsumerRibbonConfiguration {
 //		return new RandomRule();
 //	}
 
-	@Bean
-	public IRule ribbonRule(IClientConfig config) {
-		return new AvailabilityFilteringRule();
+//	@Bean
+//	public IRule ribbonRule(IClientConfig config) {
+//		return new AvailabilityFilteringRule();
+//	}
+	
+	@Bean IRule rule() {
+		return new RetryRule();
 	}
+	
 	
 	@Bean 
 	public String name() {

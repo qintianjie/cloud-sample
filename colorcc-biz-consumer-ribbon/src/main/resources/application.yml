@@ -1,10 +1,30 @@
 server: 
-  port: ${PORT:8093}
+  port: ${PORT:9411}
 #  enableSelfPreservation: false
-  
-spring:
-  application:
+ 
+spring: 
+  application: 
     name: biz-consumer-ribbon
+  cloud: 
+    zookeeper: 
+      connectString: 192.168.1.106:2181
+    stream: 
+      kafka: 
+        binder: 
+          zk-nodes: 192.168.1.106 
+          brokers: 192.168.1.106 
+  zipkin:
+    base-url: http://localhost:9411/  #spring-cloud-sleuth-zipkin
+  sleuth:
+    stream:
+      enabled: false
+    sampler:
+      percentage: 0.5
+
+zipkin:
+  collector: 
+    kafka: 
+      zookeeper: 192.168.1.106:2181   # spring-cloud-stream-binder-kafka
   
 eureka:
   instance: colorcc-biz-consumer-ribbon
@@ -24,8 +44,8 @@ colorcc-biz-consumer-ribbon:
 #      enabled: false
 #    listOfServers: localhost:8081,localhost:8082
     ServerListRefreshInterval: 1000
-    MaxAutoRetries: 1
-    MaxAutoRetriesNextServer: 1
+    MaxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
 
 zuul:

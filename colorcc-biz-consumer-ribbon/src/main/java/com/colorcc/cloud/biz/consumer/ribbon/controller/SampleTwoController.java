@@ -3,6 +3,8 @@
  */
 package com.colorcc.cloud.biz.consumer.ribbon.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/ribbon/s2")
 public class SampleTwoController {
+	
+	private final static Logger LOG = LoggerFactory.getLogger(SampleTwoController.class);
 	
 	@Value("${provider.name}")
     private String providerName; 
@@ -74,6 +78,7 @@ public class SampleTwoController {
 
 	@RequestMapping("/hi")
 	public String hi(@RequestParam(value = "name", defaultValue = "Sample") String name) {
+		LOG.info("call /ribbon/s2/hi");
 		System.out.println("pn: " + this.getProviderName());
 //		String response = this.restTemplate.getForObject("http://colorcc-biz-provider/hello/say?name={name}", String.class, name);
 		String response = this.restTemplate.getForObject("http://" + this.getProviderName() + "/hello/say?name={name}", String.class, name);

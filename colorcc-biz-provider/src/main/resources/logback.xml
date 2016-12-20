@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property resource="log.properties" />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS},%m%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="apiFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/wall-api.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/%d{yyyy-MM-dd}/wall-api.log.zip
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS},%m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="bizFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/wall-biz.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/%d{yyyy-MM-dd}/wall-biz.log.zip
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS},%m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="sqlFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/wall-sql.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/%d{yyyy-MM-dd}/wall-sql.log.zip
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS},%m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<!-- api access request -->
+	<logger name="apiFileLogger" level="DEBUG" additivity="false">
+		<appender-ref ref="apiFile" />
+	</logger>
+
+	<!-- api debug log -->
+	<logger name="bizFileLogger" level="DEBUG" additivity="false">
+		<appender-ref ref="bizFile" />
+	</logger>
+
+
+	<logger name="com.sogou.qtj.provider.mapper" level="DEBUG"
+		additivity="false">
+		<appender-ref ref="sqlFile" />
+	</logger>
+
+	<logger name="com.sogou.qtj" level="DEBUG"
+		additivity="false">
+		<appender-ref ref="bizFile" />
+	</logger>
+
+	<root level="DEBUG">
+		<appender-ref ref="bizFile" />
+	</root>
+
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>

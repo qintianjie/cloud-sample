@@ -3,6 +3,7 @@ package com.colorcc.cloud.biz.provider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Configuration
 @ComponentScan("com.colorcc.cloud.biz.provider.web.controller")
 @RestController
+@EnableZipkinStreamServer
 public class ColorccBizProviderApplication {
 
 	/**
